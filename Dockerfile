@@ -26,4 +26,4 @@ RUN uv run python manage.py collectstatic --noinput
 
 # Run migrations and start server
 CMD uv run python manage.py migrate && \
-    uv run python manage.py runserver 0.0.0.0:$PORT
+    uv run gunicorn mathletes.wsgi:application --bind 0.0.0.0:${PORT:-8000}
